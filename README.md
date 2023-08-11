@@ -1,6 +1,8 @@
 # KJW_TwoSecondaryWeapons
 A modification for Arma 3 that focuses on adding the ability to carry two secondary weapons. Follows the same principles as KJW's Two Primary Weapons, aside from adding alternative positions.
 
+Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3018159841
+
 ## Features
 - Configurable Position
   - Change where your second secondary weapon appears.
