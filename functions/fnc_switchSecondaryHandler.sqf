@@ -20,7 +20,18 @@
 params ["_delay"];
 
 private _weapon = handgunWeapon player;
-if ((!(GVAR(Enabled))) || {_weapon in parseSimpleArray (GVAR(blacklistedClasses))}) exitWith {};
+private _systemEnabled = GVAR(Enabled);
+private _weaponIsValid = true;
+if (_systemEnabled && (_weapon isNotEqualTo "")) then {
+	private _weaponLowered = toLowerANSI _weapon;
+	private _whitelist = EGVAR(whitelistedClasses,map);
+	private _whitelistHasValues = (count _whitelist) > 0;
+
+	private _matchesWhitelist = (!_whitelistHasValues) || (_weaponLowered in _whitelist);
+	private _matchesBlacklist = _weaponLowered in (EGVAR(blacklistedClasses,map));
+
+	_weaponIsValid = (!_matchesBlacklist) && _matchesWhitelist;
+};
 
 private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
 if (_secondSecondaryEquipped) then {
