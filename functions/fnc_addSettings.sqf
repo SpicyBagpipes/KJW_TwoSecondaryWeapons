@@ -67,6 +67,9 @@ private _positions = [
 			[0.703818,0.710086,0.019806] //VectorUp
 		],
 		[0.273846,0.279029,-0.0831146] //Position relative to player
+	],
+	[
+		[]
 	]
 ];
 
@@ -81,20 +84,6 @@ private _positions = [
 	true, //Setting properties. Varies based on type
 	1, //1: all clients share the same setting, 2: setting can’t be overwritten
 	{}, //Code to execute upon setting change
-	false //Requires restart?
-] call CBA_fnc_addSetting;
-
-[
-	QGVAR(ShowHolstered), //Setting classname
-	"CHECKBOX", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
-	[
-		"Show Holstered Secondaries", //Display name
-		"Stops holstered second secondaries from showing." //Tooltip
-	],
-	_componentBeautified, //Category
-	true, //Setting properties. Varies based on type
-	1, //1: all clients share the same setting, 2: setting can’t be overwritten
-	{call FUNC(updateShownWeapon)}, //Code to execute upon setting change
 	false //Requires restart?
 ] call CBA_fnc_addSetting;
 
@@ -136,7 +125,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher"], //Displaynames.
+		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "Disabled"], //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten
@@ -154,7 +143,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher"], //Displaynames.
+		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "Disabled"], //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten
