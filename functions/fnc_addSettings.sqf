@@ -63,6 +63,27 @@ private _componentBeautified = QUOTE(COMPONENT_BEAUTIFIED);
 ] call CBA_fnc_addSetting;
 
 [
+	QGVAR(whitelistedClasses), //Setting classname
+	"EDITBOX", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
+	[
+		"Whitelisted Classes", //Display name
+		"Secondaries will be able to be equipped as second secondaries if they are in this array. Array of string classnames. If empty, all weapons not blacklisted will be allowed" //Tooltip
+	],
+	_componentBeautified, //Category
+	str _arr, //Setting properties. Varies based on type
+	1, //1: all clients share the same setting, 2: setting can’t be overwritten
+	{ //Code to execute upon setting change
+		private _newWhitelistArray = parseSimpleArray _this;
+		private _whitelistMap = createHashMap;
+		_newWhitelistArray apply {
+			_whitelistMap set [toLowerANSI _x,true];
+		};
+		EGVAR(whitelistedClasses,map) = _whitelistMap;
+	},
+	false //Requires restart?
+] call CBA_fnc_addSetting;
+
+[
 	QGVAR(selectedPosition), //Setting classname
 	"LIST", //Setting type. Can be CHECKBOX, LIST, SLIDER, COLOR, EDITBOX, TIME
 	[
