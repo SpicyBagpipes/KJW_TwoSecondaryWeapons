@@ -49,7 +49,11 @@ player addEventHandler ["Killed", {
 ["CBA_loadoutSet", {
 	params ["_unit", "_loadout", "_extradata"];
 	private _secondSecondaryInfo = _extradata getOrDefault [QGVAR(secondSecondaryInfo),[]];
+	private _primarySecondaryInfo = _extradata getOrDefault [QGVAR(primarySecondaryInfo),[]];
+	private _secondSecondaryEquipped = _extradata getOrDefault [QGVAR(secondSecondaryEquipped),false];
 	_unit setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
+	_unit setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
+	_unit setVariable [QGVAR(secondSecondaryEquipped),_secondSecondaryEquipped];
 	call FUNC(updateShownWeapon);
 }] call CBA_fnc_addEventHandler;
 
@@ -57,9 +61,8 @@ player addEventHandler ["Killed", {
 	params ["_unit", "_loadout", "_extradata"];
 	private _primarySecondaryInfo = _unit getVariable [QGVAR(primarySecondaryInfo), []];
 	private _secondSecondaryInfo = _unit getVariable [QGVAR(secondSecondaryInfo), []];
-	if (handgunWeapon _unit isEqualTo _primarySecondaryInfo#0) then {
-		_extradata set [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
-	} else {
-		_extradata set [QGVAR(secondSecondaryInfo), _primarySecondaryInfo];
-	}
+	private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
+	_extradata set [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
+	_extradata set [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
+	_extradata set [QGVAR(secondSecondaryEquipped), _secondSecondaryEquipped];
 }] call CBA_fnc_addEventHandler;
