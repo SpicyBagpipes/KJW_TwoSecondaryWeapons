@@ -24,14 +24,17 @@ private _systemEnabled = GVAR(Enabled);
 private _weaponIsValid = true;
 if (_systemEnabled && (_weapon isNotEqualTo "")) then {
 	private _weaponLowered = toLowerANSI _weapon;
-	private _whitelist = EGVAR(whitelistedClasses,map);
+	private _whitelist = (parseSimpleArray GVAR(whitelistedClasses) apply {toLowerANSI _x});
+	private _blacklist = (parseSimpleArray GVAR(blacklistedClasses) apply {toLowerANSI _x});
 	private _whitelistHasValues = (count _whitelist) > 0;
 
 	private _matchesWhitelist = (!_whitelistHasValues) || (_weaponLowered in _whitelist);
-	private _matchesBlacklist = _weaponLowered in (EGVAR(blacklistedClasses,map));
+	private _matchesBlacklist = _weaponLowered in _blacklist;
 
 	_weaponIsValid = (!_matchesBlacklist) && _matchesWhitelist;
 };
+
+if ((!_systemEnabled) || (!_weaponIsValid)) exitWith {};
 
 private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
 if (_secondSecondaryEquipped) then {
