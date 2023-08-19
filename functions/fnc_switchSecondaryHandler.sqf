@@ -84,39 +84,39 @@ if (_secondSecondaryEquipped) then {
 	private _shouldBeshown = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "holsterScale") isNotEqualTo 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
 	player setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
-		[
+	[
+		{
+			params["_weapon"];
+			private _secondSecondaryInfo = player getVariable [QGVAR(secondSecondaryInfo),[]];
+			player removeWeaponGlobal _weapon;
+			player addWeaponGlobal _secondSecondaryInfo#0;
+			_secondSecondaryInfo deleteAt 0;
+			private _autoLoadedMagazine = handgunMagazine player;
+			private _autoLoadedMagazineCount = player ammo handgunWeapon player;
 			{
-				params["_weapon"];
-				private _secondSecondaryInfo = player getVariable [QGVAR(secondSecondaryInfo),[]];
-				player removeWeaponGlobal _weapon;
-				player addWeaponGlobal _secondSecondaryInfo#0;
-				_secondSecondaryInfo deleteAt 0;
-				private _autoLoadedMagazine = handgunMagazine player;
-				private _autoLoadedMagazineCount = player ammo handgunWeapon player;
-				{
-					if (_x isEqualTo []) then {continue};
-					if (typeName _x isEqualTo "ARRAY") then {
-						if (_autoLoadedMagazine isEqualTo []) then {
-							player addHandgunItem _x#0;
-							player setAmmo [handgunWeapon player, _x#1];
-						} else {
-							[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
-						};
+				if (_x isEqualTo []) then {continue};
+				if (typeName _x isEqualTo "ARRAY") then {
+					if (_autoLoadedMagazine isEqualTo []) then {
+						player addHandgunItem _x#0;
+						player setAmmo [handgunWeapon player, _x#1];
 					} else {
-						player addHandgunItem _x;
+						[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
 					};
-				} forEach _secondSecondaryInfo;
-				player setVariable [QGVAR(secondSecondaryEquipped), true];
-				if (handgunWeapon player isNotEqualTo "") then {
-					private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
-					player action ["SwitchWeapon", player, player, _muzzleIndex];
+				} else {
+					player addHandgunItem _x;
 				};
-				if (vehicle player != player) exitWith {}; //Player is in vehicle.
-				call FUNC(updateShownWeapon);
-			},
-			[
-				_weapon
-			],
-			_delay
-		] call CBA_fnc_waitAndExecute;
+			} forEach _secondSecondaryInfo;
+			player setVariable [QGVAR(secondSecondaryEquipped), true];
+			if (handgunWeapon player isNotEqualTo "") then {
+				private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
+				player action ["SwitchWeapon", player, player, _muzzleIndex];
+			};
+			if (vehicle player != player) exitWith {}; //Player is in vehicle.
+			call FUNC(updateShownWeapon);
+		},
+		[
+			_weapon
+		],
+		_delay
+	] call CBA_fnc_waitAndExecute;
 };

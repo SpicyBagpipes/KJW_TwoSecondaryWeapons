@@ -41,17 +41,12 @@ class Extended_PreInit_EventHandlers {
 	};
 };
 
-/*
-    Backend:
-    press 6
-    get pistol animation plays
-    current pistol data is saved
-    data is attachto'd on all pistol proxies on ur vest
-    data from your second secondary is set to ur current weapon
-    press 6
-    put pistol animation plays
-    pistol data loaded back to ur secondary
-
-
-
-*/
+class CfgVehicles
+{
+	class CargoNet_01_box_F;
+	class GVAR(GWH): CargoNet_01_box_F
+	{
+		model="\A3\Weapons_f\DummyWeapon_Single.p3d";
+		showWeaponCargo=1;
+	};
+};
