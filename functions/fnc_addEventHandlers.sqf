@@ -36,14 +36,23 @@
 
 player addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
+	private _weaponInfo = if (_secondSecondaryEquipped) then {
+		player getVariable [QGVAR(primarySecondaryInfo),[]];
+	} else {
+		player getVariable [QGVAR(secondSecondaryInfo),[]];
+	};
 	player setVariable [QGVAR(secondSecondaryInfo),[]];
 	player setVariable [QGVAR(primarySecondaryInfo),[]];
 	player setVariable [QGVAR(secondSecondaryEquipped),false];
 	private _objects = player getVariable [QGVAR(currentWeaponObjects),[]];
 	{
-		_x setDamage 0;
+		deleteVehicle _x;
 	} forEach _objects;
 	player setVariable [QGVAR(currentWeaponObjects),[]];
+	private _holder = createVehicle ["WeaponHolderSimulated",[0,0,0]];
+	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
+	_holder setPosASL (getPosASL _unit);
 }];
 
 ["CBA_loadoutSet", {
