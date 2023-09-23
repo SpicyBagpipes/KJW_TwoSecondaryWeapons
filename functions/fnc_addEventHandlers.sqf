@@ -47,6 +47,7 @@ player addEventHandler ["Killed", {
 	player setVariable [QGVAR(primarySecondaryInfo),[]];
 	player setVariable [QGVAR(secondSecondaryEquipped),false];
 	private _objects = player getVariable [QGVAR(currentWeaponObjects),[]];
+	if (_objects isEqualTo []) exitWith {}; // No other guns.
 	{
 		deleteVehicle _x;
 	} forEach _objects;
