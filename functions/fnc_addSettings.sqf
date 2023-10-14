@@ -69,6 +69,38 @@ private _positions = [
 		[-0.163846,-0.163029,-0.1981146] //Position relative to player
 	],
 	[
+		"pelvis",
+		[
+			[0.182612,-0.794519,-0.579108],
+			[-0.97273,-0.231622,0.011044]
+		],
+		[-0.269664,0.15333,-0.0749102]
+	],
+	[
+		"spine3",
+		[
+			[0.168737,0.105931,-0.97983],
+			[-0.00911604,-0.993878,-0.10902]
+		],
+		[-0.187933,-0.207026,0.241033]
+	],
+	[
+		"pelvis",
+		[
+			[-0.334589,0.208497,-0.918995],
+			[-0.0563157,0.969037,0.240353]
+		],
+		[-0.121786,0.200752,-0.13464]
+	],
+	[
+		"pelvis",
+		[
+			[-0.983289,-0.129567,0.127786],
+			[0.126467,-0.991437,-0.0321144]
+		],
+		[-0.0921409,-0.254411,0.0749192]
+	],
+	[
 		[]
 	]
 ];
@@ -125,7 +157,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "Disabled"], //Displaynames.
+		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "IMS Hip", "IMS Back", "Lightsaber Hip", "Lightsaber Back", "Disabled"], //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten
@@ -143,7 +175,7 @@ private _positions = [
 	_componentBeautified, //Category
 	[
 		_positions, //Values
-		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "Disabled"], //Displaynames.
+		["Small of Back","Appendix","Pocket","Boomer", "Second Rifle", "Breacher", "IMS Hip", "IMS Back", "Lightsaber Hip", "Lightsaber Back", "Disabled"], //Displaynames.
 		0
 	], //Setting properties. Varies based on type
 	0, //1: all clients share the same setting, 2: setting can’t be overwritten
