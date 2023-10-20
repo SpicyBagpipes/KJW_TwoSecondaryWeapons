@@ -19,3 +19,5 @@
 
 call FUNC(addSettings);
 call FUNC(addCBAKeybinds);
+
+GVAR(primariesLoaded) = isClass (configFile >> "CfgPatches" >> "KJW_TwoPrimaryWeapons");

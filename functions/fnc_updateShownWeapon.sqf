@@ -29,15 +29,23 @@ private _currentPositionSelection = if (_secondSecondaryEquipped) then {
 } else {
 	GVAR(selectedPositionSecondary);
 };
+
+if (_currentPositionSelection isEqualTo []) exitWith {};
+
 private _positions = [_currentPositionSelection];
 private _objects = [];
 
 {
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
-if (_weaponInfo isEqualTo [] || {_currentPositionSelection isEqualTo []}) exitWith {};
+if (_weaponInfo isEqualTo []) exitWith {};
 {
-	private _holder = createVehicle [QGVAR(GWH),[0,0,0]];
+	private _class = if (GVAR(primariesLoaded)) then {
+		"KJW_TwoPrimaryWeapons_GWH"
+	} else {
+		QGVAR(GWH)
+	};
+	private _holder = createVehicle [_class,[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
 	_holder setDamage 1;
 	_holder attachTo [player, _x#2, _x#0, true];
