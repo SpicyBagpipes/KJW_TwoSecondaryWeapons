@@ -18,8 +18,8 @@
 
 
 call FUNC(addEventHandlers);
-call FUNC(addSettings);
 call FUNC(addCBAKeybinds);
+call FUNC(addSettings);
 
 GVAR(primariesLoaded) = isClass (configFile >> "CfgPatches" >> "KJW_TwoPrimaryWeapons");
 
@@ -27,5 +27,5 @@ GVAR(primariesLoaded) = isClass (configFile >> "CfgPatches" >> "KJW_TwoPrimaryWe
 [[1], QGVAR(arsenalActions), "KJW's Two Weapons", [
 	["text", "Text", {true}, "Swap Secondary Weapons"],
 	["statement", "Statement", {true}, ""],
-	["button", "Switch", {true}, "", {}, {[0.1] call FUNC(switchSecondaryHandler); [true] call ace_arsenal_fnc_refresh;}]
+	["button", "Switch", {true}, "", {}, {[0] call FUNC(switchSecondaryHandler); [true] call ace_arsenal_fnc_refresh;}]
 ]] call ace_arsenal_fnc_addAction;
