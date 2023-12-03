@@ -59,9 +59,9 @@ player addEventHandler ["Killed", {
 
 ["CBA_loadoutSet", {
 	params ["_unit", "_loadout", "_extradata"];
-	private _secondSecondaryInfo = _extradata getOrDefault [QGVAR(secondSecondaryInfo),[]];
-	private _primarySecondaryInfo = _extradata getOrDefault [QGVAR(primarySecondaryInfo),[]];
-	private _secondSecondaryEquipped = _extradata getOrDefault [QGVAR(secondSecondaryEquipped),false];
+	private _secondSecondaryInfo = + _extradata getOrDefault [QGVAR(secondSecondaryInfo),[]];
+	private _primarySecondaryInfo = + _extradata getOrDefault [QGVAR(primarySecondaryInfo),[]];
+	private _secondSecondaryEquipped = + _extradata getOrDefault [QGVAR(secondSecondaryEquipped),false];
 	_unit setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
 	_unit setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
 	_unit setVariable [QGVAR(secondSecondaryEquipped),_secondSecondaryEquipped];
@@ -70,9 +70,9 @@ player addEventHandler ["Killed", {
 
 ["CBA_loadoutGet", {
 	params ["_unit", "_loadout", "_extradata"];
-	private _primarySecondaryInfo = _unit getVariable [QGVAR(primarySecondaryInfo), []];
-	private _secondSecondaryInfo = _unit getVariable [QGVAR(secondSecondaryInfo), []];
-	private _secondSecondaryEquipped = _unit getVariable [QGVAR(secondSecondaryEquipped),false];
+	private _primarySecondaryInfo = + _unit getVariable [QGVAR(primarySecondaryInfo), []];
+	private _secondSecondaryInfo = + _unit getVariable [QGVAR(secondSecondaryInfo), []];
+	private _secondSecondaryEquipped = + _unit getVariable [QGVAR(secondSecondaryEquipped),false];
 	_extradata set [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
 	_extradata set [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
 	_extradata set [QGVAR(secondSecondaryEquipped), _secondSecondaryEquipped];
