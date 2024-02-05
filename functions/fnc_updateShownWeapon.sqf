@@ -36,6 +36,10 @@ private _positions = [_currentPositionSelection];
 private _objects = [];
 
 {
+	if (GVAR(addACEweight)) then {
+		private _weaponMass = _x getVariable [QGVAR(mass), 0];
+		[player, player, -_weaponMass] call ace_movement_fnc_addLoadToUnitContainer;
+	};
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
 if (_weaponInfo isEqualTo []) exitWith {};
@@ -47,6 +51,11 @@ if (_weaponInfo isEqualTo []) exitWith {};
 	};
 	private _holder = createVehicle [_class,[0,0,0]];
 	_holder addWeaponWithAttachmentsCargoGlobal [_weaponInfo, 1];
+	if (GVAR(addACEweight)) then {
+		private _weaponMass = loadAbs _holder;
+		_holder setVariable [QGVAR(mass), _weaponMass];
+		[player, player, _weaponMass] call ace_movement_fnc_addLoadToUnitContainer;
+	};
 	_holder setDamage 1;
 	_holder attachTo [player, _x#2, _x#0, true];
 	_holder setVectorDirAndUp _x#1;

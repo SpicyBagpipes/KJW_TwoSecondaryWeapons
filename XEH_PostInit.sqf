@@ -29,3 +29,5 @@ GVAR(primariesLoaded) = isClass (configFile >> "CfgPatches" >> "KJW_TwoPrimaryWe
 	["statement", "Statement", {true}, ""],
 	["button", "Switch", {true}, "", {}, {[0] call FUNC(switchSecondaryHandler); [true] call ace_arsenal_fnc_refresh;}]
 ]] call ace_arsenal_fnc_addAction;
+
+GVAR(addACEweight) = isClass (configFile >> "CfgPatches" >> "ace_movement");
