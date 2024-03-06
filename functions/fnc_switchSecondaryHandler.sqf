@@ -45,7 +45,7 @@ if (_secondSecondaryEquipped) then {
 	[
 		{
 			params ["_weapon"];
-			private _primarySecondaryInfo = player getVariable [QGVAR(primarySecondaryInfo),[]];
+			private _primarySecondaryInfo =+ (player getVariable [QGVAR(primarySecondaryInfo),[]]);
 			player removeWeaponGlobal _weapon;
 			player addWeaponGlobal _primarySecondaryInfo#0;
 			_primarySecondaryInfo deleteAt 0;
@@ -87,7 +87,7 @@ if (_secondSecondaryEquipped) then {
 	[
 		{
 			params["_weapon"];
-			private _secondSecondaryInfo = player getVariable [QGVAR(secondSecondaryInfo),[]];
+			private _secondSecondaryInfo =+ (player getVariable [QGVAR(secondSecondaryInfo),[]]);
 			player removeWeaponGlobal _weapon;
 			player addWeaponGlobal _secondSecondaryInfo#0;
 			_secondSecondaryInfo deleteAt 0;

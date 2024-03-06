@@ -25,6 +25,7 @@ class CfgFunctions {
             FUNCTION_DECLARE(addEventHandlers)
             FUNCTION_DECLARE(switchSecondaryHandler)
             FUNCTION_DECLARE(updateShownWeapon)
+            FUNCTION_DECLARE(addSecondWeapon)
         };
     };
 };
@@ -46,6 +47,7 @@ class CfgVehicles
 	class CargoNet_01_box_F;
 	class GVAR(GWH): CargoNet_01_box_F
 	{
+        scope = 1;
 		model="\A3\Weapons_f\DummyWeapon_Single.p3d";
 		showWeaponCargo=1;
 	};
