@@ -58,7 +58,9 @@ if (_secondSecondaryEquipped) then {
 						player addHandgunItem _x#0;
 						player setAmmo [handgunWeapon player, _x#1];
 					} else {
-						[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
+						player addHandgunItem _x#0;
+						player setAmmo [handgunWeapon player, _x#1];
+						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
 					};
 				} else {
 					player addHandgunItem _x;
@@ -100,7 +102,9 @@ if (_secondSecondaryEquipped) then {
 						player addHandgunItem _x#0;
 						player setAmmo [handgunWeapon player, _x#1];
 					} else {
-						[player, _x#0,_x#1, true] call CBA_fnc_addMagazine;
+						player addHandgunItem _x#0;
+						player setAmmo [handgunWeapon player, _x#1];
+						[player, _autoLoadedMagazine,_autoLoadedMagazineCount, true] call CBA_fnc_addMagazine;
 					};
 				} else {
 					player addHandgunItem _x;
