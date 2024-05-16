@@ -41,7 +41,7 @@ if (_secondSecondaryEquipped) then {
 	//De-equip second secondary.
 	private _secondSecondaryInfo = (getUnitLoadout player) select 2;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
-	player setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
+	player setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo,true];
 	[
 		{
 			params ["_weapon"];
@@ -60,7 +60,7 @@ if (_secondSecondaryEquipped) then {
 					player addHandgunItem _x;
 				};
 			} forEach _primarySecondaryInfo;
-			player setVariable [QGVAR(secondSecondaryEquipped), false];
+			player setVariable [QGVAR(secondSecondaryEquipped), false,true];
 			if (handgunWeapon player isNotEqualTo "") then {
 				private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
 				player action ["SwitchWeapon", player, player, _muzzleIndex];
@@ -79,7 +79,7 @@ if (_secondSecondaryEquipped) then {
 	private _primarySecondaryInfo = (getUnitLoadout player) select 2;
 	private _shouldBeshown = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "holsterScale") isNotEqualTo 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
-	player setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
+	player setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo,true];
 	[
 		{
 			params["_weapon"];
@@ -98,7 +98,7 @@ if (_secondSecondaryEquipped) then {
 					player addHandgunItem _x;
 				};
 			} forEach _secondSecondaryInfo;
-			player setVariable [QGVAR(secondSecondaryEquipped), true];
+			player setVariable [QGVAR(secondSecondaryEquipped), true,true];
 			if (handgunWeapon player isNotEqualTo "") then {
 				private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
 				player action ["SwitchWeapon", player, player, _muzzleIndex];

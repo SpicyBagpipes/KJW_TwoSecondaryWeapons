@@ -24,9 +24,9 @@ params ["_weaponInfo"];
 private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
 
 if (_secondSecondaryEquipped) then {
-    player setVariable [QGVAR(primarySecondaryInfo),_weaponInfo];
+    player setVariable [QGVAR(primarySecondaryInfo),_weaponInfo,true];
 } else {
-    player setVariable [QGVAR(secondSecondaryInfo),_weaponInfo];
+    player setVariable [QGVAR(secondSecondaryInfo),_weaponInfo,true];
 };
 
 call FUNC(updateShownWeapon);

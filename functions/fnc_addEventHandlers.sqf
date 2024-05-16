@@ -25,11 +25,11 @@
 		if (_secondSecondaryEquipped) then {
 			//If player has second secondary weapon equipped, update second secondary weapon info variable.
 			private _secondSecondaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
-			player setVariable [QGVAR(secondSecondaryInfo),_secondSecondaryInfo];
+			player setVariable [QGVAR(secondSecondaryInfo),_secondSecondaryInfo,true];
 		} else {
 			//If player has primary secondary weapon equipped, update primary secondary weapon info variable.
 			private _primarySecondaryInfo = ((weaponsItems player) select {_x#0 isEqualTo _weapon})#0;
-			player setVariable [QGVAR(primarySecondaryInfo),_primarySecondaryInfo];
+			player setVariable [QGVAR(primarySecondaryInfo),_primarySecondaryInfo,true];
 		};
 	}
 ] call CBA_fnc_addPlayerEventHandler;
@@ -43,9 +43,9 @@ player addEventHandler ["Killed", {
 	} else {
 		player getVariable [QGVAR(secondSecondaryInfo),[]];
 	};
-	player setVariable [QGVAR(secondSecondaryInfo),[]];
-	player setVariable [QGVAR(primarySecondaryInfo),[]];
-	player setVariable [QGVAR(secondSecondaryEquipped),false];
+	player setVariable [QGVAR(secondSecondaryInfo),[],true];
+	player setVariable [QGVAR(primarySecondaryInfo),[],true];
+	player setVariable [QGVAR(secondSecondaryEquipped),false,true];
 	private _objects = player getVariable [QGVAR(currentWeaponObjects),[]];
 	if (_objects isEqualTo []) exitWith {}; // No other guns.
 	{
@@ -67,9 +67,9 @@ player addEventHandler ["Killed", {
 	private _secondSecondaryInfo = _extradata getOrDefault [QGVAR(secondSecondaryInfo),[]];
 	private _primarySecondaryInfo = _extradata getOrDefault [QGVAR(primarySecondaryInfo),[]];
 	private _secondSecondaryEquipped = _extradata getOrDefault [QGVAR(secondSecondaryEquipped),false];
-	_unit setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo];
-	_unit setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo];
-	_unit setVariable [QGVAR(secondSecondaryEquipped),_secondSecondaryEquipped];
+	_unit setVariable [QGVAR(secondSecondaryInfo), _secondSecondaryInfo,true];
+	_unit setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo,true];
+	_unit setVariable [QGVAR(secondSecondaryEquipped),_secondSecondaryEquipped,true];
 	call FUNC(updateShownWeapon);
 }] call CBA_fnc_addEventHandler;
 
