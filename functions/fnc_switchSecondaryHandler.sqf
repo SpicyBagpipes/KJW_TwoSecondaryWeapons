@@ -77,7 +77,6 @@ if (_secondSecondaryEquipped) then {
 	//Equip second secondary.
 	private _weapon = handgunWeapon player;
 	private _primarySecondaryInfo = (getUnitLoadout player) select 2;
-	private _shouldBeshown = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "holsterScale") isNotEqualTo 0;
 	player action ["SwitchWeapon", player, player, 299]; //Put weapon away action.
 	player setVariable [QGVAR(primarySecondaryInfo), _primarySecondaryInfo,true];
 	[
