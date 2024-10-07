@@ -42,7 +42,7 @@ private _objects = [];
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
 
-if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tried to update shown weapon but weapon data was incorrectly format."; diag_log "KJW's Two Weapons | " + str _weaponInfo};
+if (count _weaponInfo isNotEqualTo 7) exitWith {diag_log "KJW's Two Weapons | Tried to update shown weapon but weapon data was incorrectly formatted or weapons failed white/blacklist validation."; diag_log "KJW's Two Weapons | " + str _weaponInfo};
 
 {
 	private _class = if (GVAR(primariesLoaded)) then {
