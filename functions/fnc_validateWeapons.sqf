@@ -5,20 +5,22 @@
  *  Updates shown weapon based on player's currently equipped primary.
  *
  *  Arguments:
- *  None
+ *  0: Unit <OBJECT>
+ *
  *
  *  Return Value:
  *  None
  *
  *  Example:
- *  call KJW_TwoSecondaryWeapons_fnc_updateShownWeapon
+ *  [ace_player] call KJW_TwoSecondaryWeapons_fnc_validateWeapons
  *
  *  Public: No
  */
 
+params ["_unit"];
 
-private _primarySecondaryWeapon = (player getVariable [QGVAR(primarySecondaryInfo),[""]])#0;
-private _secondSecondaryWeapon = (player getVariable [QGVAR(secondSecondaryInfo),[""]])#0;
+private _primarySecondaryWeapon = (_unit getVariable [QGVAR(primarySecondaryInfo),[""]])#0;
+private _secondSecondaryWeapon = (_unit getVariable [QGVAR(secondSecondaryInfo),[""]])#0;
 
 private _primaryIsValid = true;
 private _secondaryIsValid = true;
@@ -47,9 +49,9 @@ if ((_secondSecondaryWeapon isNotEqualTo "")) then {
 };
 
 if !_primaryIsValid then {
-	player setVariable [QGVAR(primarySecondaryInfo),nil]
+	_unit setVariable [QGVAR(primarySecondaryInfo),nil]
 };
 
 if !_secondaryIsValid then {
-	player setVariable [QGVAR(secondSecondaryInfo),nil]
+	_unit setVariable [QGVAR(secondSecondaryInfo),nil]
 };
