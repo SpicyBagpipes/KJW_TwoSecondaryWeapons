@@ -19,8 +19,8 @@
 
 params ["_unit"];
 
-private _primarySecondaryWeapon = (_unit getVariable [QGVAR(primarySecondaryInfo),[""]])#0;
-private _secondSecondaryWeapon = (_unit getVariable [QGVAR(secondSecondaryInfo),[""]])#0;
+private _primarySecondaryWeapon = (_unit getVariable [QGVAR(primarySecondaryInfo),[""]]) select 0;
+private _secondSecondaryWeapon = (_unit getVariable [QGVAR(secondSecondaryInfo),[""]]) select 0;
 
 private _primaryIsValid = true;
 private _secondaryIsValid = true;
