@@ -30,8 +30,6 @@ private _currentPositionSelection = if (_secondSecondaryEquipped) then {
 	GVAR(selectedPositionSecondary);
 };
 
-if ((_currentPositionSelection isEqualTo [[]]) || (count _weaponInfo isNotEqualTo 7)) exitWith {};
-
 private _objects = [];
 
 {
@@ -41,6 +39,8 @@ private _objects = [];
 	};
 	deleteVehicle _x;
 } forEach _currentWeaponObjects;
+
+if ((_currentPositionSelection isEqualTo [[[]]]) || (count _weaponInfo isNotEqualTo 7)) exitWith {};
 
 {
 	private _class = if (GVAR(primariesLoaded)) then {
