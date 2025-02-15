@@ -19,12 +19,12 @@
 
 params ["_unit"];
 
-private _primarySecondaryWeapon = (_unit getVariable [QGVAR(primarySecondaryInfo),[""]]) select 0;
-private _secondSecondaryWeapon = (_unit getVariable [QGVAR(secondSecondaryInfo),[""]]) select 0;
+private _primarySecondaryWeapon = (_unit getVariable [QGVAR(primarySecondaryInfo),[]]) select 0;
+private _secondSecondaryWeapon = (_unit getVariable [QGVAR(secondSecondaryInfo),[]]) select 0;
 
 private _primaryIsValid = true;
 private _secondaryIsValid = true;
-if ((_primarySecondaryWeapon isNotEqualTo "")) then {
+if (!(isNil {_primarySecondaryWeapon})) then {
 	private _weaponLowered = toLowerANSI _primarySecondaryWeapon;
 	private _whitelist = (parseSimpleArray GVAR(whitelistedClasses) apply {toLowerANSI _x});
 	private _blacklist = (parseSimpleArray GVAR(blacklistedClasses) apply {toLowerANSI _x});
@@ -36,7 +36,7 @@ if ((_primarySecondaryWeapon isNotEqualTo "")) then {
 	_primaryIsValid = (!_matchesBlacklist) && _matchesWhitelist;
 };
 
-if ((_secondSecondaryWeapon isNotEqualTo "")) then {
+if (!(isNil {_secondSecondaryWeapon})) then {
 	private _weaponLowered = toLowerANSI _secondSecondaryWeapon;
 	private _whitelist = (parseSimpleArray GVAR(whitelistedClasses) apply {toLowerANSI _x});
 	private _blacklist = (parseSimpleArray GVAR(blacklistedClasses) apply {toLowerANSI _x});
