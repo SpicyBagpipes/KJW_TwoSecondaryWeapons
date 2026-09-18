@@ -65,7 +65,6 @@ if (_secondSecondaryEquipped) then {
 				private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
 				player action ["SwitchWeapon", player, player, _muzzleIndex];
 			};
-			if (vehicle player != player) exitWith {}; //Player is in vehicle.
 			call FUNC(updateShownWeapon);
 		},
 		[
@@ -102,7 +101,6 @@ if (_secondSecondaryEquipped) then {
 				private _muzzleIndex = (player weaponsInfo [handgunWeapon player, false])#0#0;
 				player action ["SwitchWeapon", player, player, _muzzleIndex];
 			};
-			if (vehicle player != player) exitWith {}; //Player is in vehicle.
 			call FUNC(updateShownWeapon);
 		},
 		[

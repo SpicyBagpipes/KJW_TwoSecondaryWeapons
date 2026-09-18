@@ -16,6 +16,7 @@
  *  Public: No
  */
 
+if (vehicle player != player) exitWith {}; //Player is in vehicle.
 
 private _currentWeaponObjects = player getVariable [QGVAR(currentWeaponObjects),[]];
 private _secondSecondaryEquipped = player getVariable [QGVAR(secondSecondaryEquipped),false];
